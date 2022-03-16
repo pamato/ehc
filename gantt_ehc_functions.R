@@ -62,3 +62,129 @@ gantt_event_row_edu <- function (i, data, col_title, city_title, col_datefrom, c
   
   paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
 }
+
+gantt_event_row_jobs <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("j", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}
+
+gantt_event_row_rel <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("p", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}
+
+gantt_event_row_ch <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("c", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}
+
+gantt_event_row_ph <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("ph", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}
+
+gantt_event_row_ih <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("ih", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}
+
+gantt_event_row_ah <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+  empty <- ''
+  
+  if(!(paste0(col_title, i) %in% colnames(data))) {
+    return (empty)    
+  }
+  
+  title <- last(data[paste0(col_title, i)])
+  if (is.na(title) || title == '') {
+    return (empty)
+  }
+  
+  is_current <- last(data[paste0(col_current, i)]) == 1
+  datefrom <- last(data[paste0(col_datefrom, i)])
+  dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
+  tag <- ifelse(is_current, "active", "done");
+  label <- paste0("ah", i)
+  
+  paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
+}

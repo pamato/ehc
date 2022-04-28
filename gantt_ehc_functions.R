@@ -105,7 +105,7 @@ gantt_event_row_rel <- function (i, data, col_title, col_datefrom, col_dateto, c
   paste(title, ":", tag, ",", label, ",", datefrom, ",", dateto,  "     ", sep = " ")
 }
 
-gantt_event_row_ch <- function (i, data, col_title, col_datefrom, col_dateto, col_current) {
+gantt_event_row_ch <- function (i, data, col_title, col_dateto, col_current) {
   empty <- ''
   
   if(!(paste0(col_title, i) %in% colnames(data))) {
@@ -117,8 +117,18 @@ gantt_event_row_ch <- function (i, data, col_title, col_datefrom, col_dateto, co
     return (empty)
   }
   
+  getdate <- function(d) {
+    isnothing = function(y) {is.null(y) | is.na(y) | is.nan(y)}
+    vars <- paste0(c("dfa_C", "dfb_C", "dfs_C"), i)
+    if(length(which(c(!isnothing(d[[vars[1]]]), !isnothing(d[[vars[2]]]), !isnothing(d[[vars[3]]]))))>0){
+      datefrom <- d[[vars[which(c(!isnothing(d[[vars[1]]]), !isnothing(d[[vars[2]]]), !isnothing(d[[vars[3]]])))]]]
+    }
+    return(datefrom)
+  }
+  
+  datefrom <- getdate(data)
+  
   is_current <- last(data[paste0(col_current, i)]) == 1
-  datefrom <- last(data[paste0(col_datefrom, i)])
   dateto <- ifelse(is_current, format(Sys.Date(), "%Y-%m-%d"), last(data[paste0(col_dateto, i)]))
   tag <- ifelse(is_current, "active", "done");
   label <- paste0("c", i)
